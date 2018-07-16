@@ -2,6 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const axios = require('axios')
+const db = require('./database/index.js')
 
 
 let app = express()
