@@ -5,8 +5,11 @@ const axios = require('axios')
 
 
 let app = express()
+
 app.use(bodyParser.json());
+
 app.use(morgan('dev'))
+
 app.use(express.static(__dirname + '/client/dist/'))
 
 app.get('/', (req, res) => {
