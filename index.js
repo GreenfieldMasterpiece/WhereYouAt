@@ -1,25 +1,37 @@
-const express = require('express')
+const express = require('express');
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const axios = require('axios')
 const db = require('./database/index.js')
-const router = require('./database/routers.js')
+const router = require('./database/routers.js');
 
+let app = express();
 
-let app = express()
+var http = require('http').Server();
 
 app.use(bodyParser.json());
 
 app.use(morgan('dev'))
 
-app.use(express.static(__dirname + '/client/dist/'))
+app.use(express.static(__dirname + '/client/dist/'));
+
 app.use('/whereyouat', router)
 
-app.get('/', (req, res) => {
-  res.send('Connection working')
+
+// route handler will use /chat and serve the page with the chat box
+app.get('/chat', (req, res)=> {
+  res.sendFile(__dirname + '/test.html');
 })
 
+let port = 3000;
 
-let port = 3000
+var server = app.listen(port, () => {console.log('Listening on port ' + port)})
 
-app.listen(port, () => {console.log('Listening on port ' + port)})
+var io = require('socket.io').listen(server);
+
+// creating connection for socket.io
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    io.emit('chat message', msg);
+  });
+});
