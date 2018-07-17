@@ -12,13 +12,15 @@ class App extends React.Component {
       login: true,
       username: '',
       friends: [],
-      loggedIn: false
+      loggedIn: false,
+      loginError: ''
     }
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.getFriends = this.getFriends.bind(this);
     this.userLogin = this.userLogin.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
 
@@ -26,6 +28,16 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({
       navItemShow: !this.state.navItemShow
+    })
+  }
+
+  logout() {
+    this.setState({
+      login: true,
+      username: '',
+      friends: [],
+      loggedIn: false,
+      loginError: ''
     })
   }
 
@@ -43,14 +55,17 @@ class App extends React.Component {
     .then((data) => {
       this.setState({
         user: username,
-        loggedIn: true
+        loggedIn: true,
+        loginError: '',
+        login: false
       })
       this.getFriends(username);
     })
     .catch((err) => {
       //Set error message in login failure
-      console.log('failure');
-      console.log(err);
+      this.setState({
+        loginError: 'User not found'
+      })
     })
   }
 
@@ -77,6 +92,8 @@ class App extends React.Component {
             navItemClicked={this.navItemClicked}
             loginUser={this.loginUser}
             loggedIn={this.state.loggedIn}
+            loginError={this.state.loginError}
+            logout={this.logout}
             /> 
         </div>
       )
@@ -84,7 +101,7 @@ class App extends React.Component {
       return (
         <div>
           <HeaderComponent />
-          <ChatContainerComponent />
+          <ChatContainerComponent friends={this.state.friends}/>
         </div>
       )
     }
