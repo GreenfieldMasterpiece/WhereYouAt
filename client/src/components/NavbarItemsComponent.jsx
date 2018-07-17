@@ -15,6 +15,9 @@ class NavbarItemsComponent extends React.Component {
   navItemClicked(e){
     e.preventDefault();
     this.props.loginUser(this.state.userInput);
+    this.setState({
+      userInput: ''
+    })
   }
 
   logout(e){
