@@ -1,5 +1,9 @@
 let {Favorites, Users, Friends} = require('./schemas.js')
 
+exports.getUsers = (req, res) => {
+  Users.find({}).then(response => res.send(response))
+}
+
 exports.saveUser = (req, res) => {
   return new Users ({
     username: req.body.username

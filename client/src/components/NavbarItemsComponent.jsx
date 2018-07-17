@@ -44,7 +44,7 @@ class NavbarItemsComponent extends React.Component {
             <form action="">
               <div className='username-box'>
                 <label htmlFor="">Username</label>
-                <input type="text" placeholder='username' 
+                <input type="text" placeholder='username'
                 onChange={(e) => {
                   this.setState({
                     userInput: e.target.value
