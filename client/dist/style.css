@@ -156,25 +156,26 @@ header {
 }
 
 .socket-chat-container {
-  position: absolute;
-  display: inline-block;
-  width: 100%;
-  bottom: 0;
+  position: relative;
+  width: 80%;
+  height: 350px;
+  margin: 10px auto 0;
+  overflow: scroll;
 }
 
-.socket-chat-container form {
-  margin-bottom: 30px;
-}
-
-.socket-chat-container #messageInput {
+.chat-client-container #messageInput {
   display: block;
   width: 80%;
-  padding-left: 0;
+  padding: 0;
   border: none;
   border-radius: 0;
   border-bottom: 1px solid #000;
   margin: 0 auto;
   color: #000;
+}
+
+.chat-client-container form {
+  margin-top: 0;
 }
 
 #messageInput::placeholder {
