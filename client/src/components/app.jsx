@@ -9,16 +9,28 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      login: true
+      login: true,
+      navItemShow: false,
     }
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
+    this.userLogin = this.userLogin.bind(this);
   }
 
+
   navItemClicked(e){
+    e.preventDefault();
     console.log('Nav Item clicked');
     this.setState({
       navItemShow: !this.state.navItemShow
+    })
+  }
+
+  userLogin(e) {
+    e.preventDefault();
+    
+    this.setState({
+      login: !this.state.login
     })
   }
   // use methods here
@@ -27,7 +39,8 @@ class App extends React.Component {
     if(this.state.login){
       return (
         <div>
-          <NavComponent 
+          <NavComponent
+            userLogin={this.userLogin} 
             navItemShow={this.state.navItemShow}
             navItemClicked={this.navItemClicked}
             /> 
