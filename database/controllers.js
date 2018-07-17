@@ -17,7 +17,6 @@ exports.retrieveAllMessages = (req, res) => {
 }
 
 exports.saveMessage = (req, res) => {
-  console.log(req.body)
   new Favorites ({
     username: req.body.username,
     favoriteMessage: req.body.favoriteMessage,
@@ -26,7 +25,10 @@ exports.saveMessage = (req, res) => {
 }
 
 exports.deleteMessage = (req, res) => {
-  console.log(req.body)
   let {username} = req.params
   Favorites.deleteOne({favoriteMessage: req.body.favoriteMessage}).then(response => res.send('deleted one'))
+}
+
+exports.deleteAllMessages = (req, res) => {
+  Favorites.remove({}).then(response => res.send('all messages by user deleted'))
 }
