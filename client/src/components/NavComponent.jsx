@@ -9,7 +9,9 @@ const NavComponent = (props) => {
         userLogin={props.userLogin}
         navItemClicked={props.navItemClicked}
         loginUser={props.loginUser}
-        loggedIn={props.loggedIn} />
+        loggedIn={props.loggedIn}
+        loginError={props.loginError}
+        logout={props.logout} />
     </nav>
   )
 }

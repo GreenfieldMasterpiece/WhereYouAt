@@ -17,12 +17,16 @@ class NavbarItemsComponent extends React.Component {
     this.props.loginUser(this.state.userInput);
   }
 
+  logout(e){
+    this.props.logout();
+  }
+
   render(){
     if(this.props.loggedIn){
       return (
         <ul className='navbar-items'>
           <li className='title'>Where You At</li>
-          <li onClick={(e) => this.props.navItemClicked(e)}>Logout</li>
+          <li onClick={(e) => this.props.logout(e)}>Logout</li>
         </ul>
       )
     } else {
@@ -32,6 +36,7 @@ class NavbarItemsComponent extends React.Component {
             <div className='login'>
               <h3>Login</h3>
             </div>
+            <label>{this.props.loginError}</label>
             <form action="">
               <div className='username-box'>
                 <label htmlFor="">Username</label>
