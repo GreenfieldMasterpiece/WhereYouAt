@@ -13,7 +13,9 @@ class App extends React.Component {
       username: '',
       friends: [],
       loggedIn: false,
-      loginError: ''
+      loginError: '',
+      latitude: '',
+      longitude: ''
     }
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
@@ -21,8 +23,22 @@ class App extends React.Component {
     this.getFriends = this.getFriends.bind(this);
     this.userLogin = this.userLogin.bind(this);
     this.logout = this.logout.bind(this);
+    this.getLocation = this.getLocation.bind(this);
   }
 
+  getLocation() {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      var crd = pos.coords;
+
+      let long = crd.longitude
+      let lat = crd.latitude
+
+      this.setState({
+        longitude: long,
+        latitude: lat
+      })
+    })
+  }
 
   navItemClicked(e){
     e.preventDefault();
@@ -37,13 +53,13 @@ class App extends React.Component {
       username: '',
       friends: [],
       loggedIn: false,
-      loginError: ''
+      loginError: '',
     })
   }
 
   userLogin(e) {
     e.preventDefault();
-    
+
     this.setState({
       login: !this.state.login
     })
@@ -87,34 +103,35 @@ class App extends React.Component {
       return (
         <div>
           <NavComponent
-            userLogin={this.userLogin} 
+            userLogin={this.userLogin}
             navItemShow={this.state.navItemShow}
             navItemClicked={this.navItemClicked}
             loginUser={this.loginUser}
             loggedIn={this.state.loggedIn}
             loginError={this.state.loginError}
             logout={this.logout}
-            /> 
+            getLocation={this.getLocation}
+            />
         </div>
       )
     } else {
       return (
         <div>
           <NavComponent
-            userLogin={this.userLogin} 
+            userLogin={this.userLogin}
             navItemShow={this.state.navItemShow}
             navItemClicked={this.navItemClicked}
             loginUser={this.loginUser}
             loggedIn={this.state.loggedIn}
             loginError={this.state.loginError}
             logout={this.logout}
-          /> 
+          />
           <HeaderComponent />
           <ChatContainerComponent friends={this.state.friends}/>
         </div>
       )
     }
-    
+
   }
 }
 
