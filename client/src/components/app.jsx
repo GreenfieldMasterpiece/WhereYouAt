@@ -25,6 +25,7 @@ class App extends React.Component {
       navItemShow: !this.state.navItemShow
     })
   }
+
   // use methods here
   loginUser(username) {
     axios.get(`/whereyouat/${username}`)
@@ -42,9 +43,14 @@ class App extends React.Component {
   }
 
   getFriends(username) {
-    axios.get(`/${username}/friends`)
-    .then(function(data) {
-      console.log(data);
+    axios.get(`/whereyouat/${username}/friends`)
+    .then((response) => {
+      let newFriends = response.data.map((friendObject) => {
+        return friendObject.friend;
+      });
+      this.setState({
+        friends: newFriends
+      })
     })
   }
 
