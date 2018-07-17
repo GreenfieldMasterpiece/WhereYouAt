@@ -17,29 +17,34 @@ class App extends React.Component {
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
     this.loginUser = this.loginUser.bind(this);
+    this.getFriends = this.getFriends.bind(this);
   }
 
   navItemClicked(e){
-    console.log('Nav Item clicked');
     this.setState({
       navItemShow: !this.state.navItemShow
     })
   }
   // use methods here
   loginUser(username) {
-    axios.post('/', username)
+    axios.get(`/whereyouat/${username}`)
     .then((data) => {
-      console.log(data);
       this.setState({
-        user: data.username,
-        friends: data.friends,
+        user: username,
         loggedIn: true
       })
-      .catch((err) => {
-        //Set error message in login failure
-        console.log('hi');
-        console.log(err);
-      })
+      this.getFriends(username);
+    })
+    .catch((err) => {
+      //Set error message in login failure
+      console.log(err);
+    })
+  }
+
+  getFriends(username) {
+    axios.get(`/${username}/friends`)
+    .then(function(data) {
+      console.log(data);
     })
   }
 
