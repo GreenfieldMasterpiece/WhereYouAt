@@ -100,6 +100,15 @@ class App extends React.Component {
     } else {
       return (
         <div>
+          <NavComponent
+            userLogin={this.userLogin} 
+            navItemShow={this.state.navItemShow}
+            navItemClicked={this.navItemClicked}
+            loginUser={this.loginUser}
+            loggedIn={this.state.loggedIn}
+            loginError={this.state.loginError}
+            logout={this.logout}
+          /> 
           <HeaderComponent />
           <ChatContainerComponent friends={this.state.friends}/>
         </div>
