@@ -7,8 +7,11 @@ const router = require('./database/routers.js')
 
 
 let app = express()
+
 app.use(bodyParser.json());
+
 app.use(morgan('dev'))
+
 app.use(express.static(__dirname + '/client/dist/'))
 app.use('/whereyouat', router)
 
