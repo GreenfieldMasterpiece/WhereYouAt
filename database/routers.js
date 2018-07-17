@@ -7,9 +7,7 @@ router.route('/')
 
 router.route('/:username')
   .get(controllers.retrieveUser)
-
-
-  // .delete(controllers.deleteAllMessages)
+  .delete(controllers.deleteAllMessages)
 
 router.route('/:username/messages')
   .get(controllers.retrieveAllMessages)
