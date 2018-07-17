@@ -11,6 +11,7 @@ router.route('/:username')
 router.route('/:username/friends')
   .get(controllers.retrieveFriends)
   .post(controllers.saveFriend)
+  .delete(controllers.deleteFriend)
 
 router.route('/:username/messages')
   .get(controllers.retrieveAllMessages)
