@@ -14,9 +14,9 @@ class FriendsListComponent extends React.Component {
       <div className='friends-list-container'>
         <h2>Friends List</h2>
         <ul>
-          {this.props.friends.map((friend) =>
+          {/* {this.props.friends.map((friend) =>
             <li> {friend} </li>
-          )} 
+          )}  */}
         </ul>
       </div>
     )
