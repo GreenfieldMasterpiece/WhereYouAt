@@ -8,13 +8,19 @@ exports.saveUser = (req, res) => {
 
 exports.retrieveUser = (req, res) => {
   let {username} = req.params
-  return Users.find({username: username}).then(response => res.send(response))
-}
+  return Users.find({username: username}).then(response => {
+    if (response.length === 0) res.sendStatus(404)
+    else res.send(response)
+  }
+)}
 
 exports.retrieveAllMessages = (req, res) => {
   let {username} = req.params
-  Favorites.find({username: username}).then(response => res.send(response))
-}
+  Favorites.find({username: username}).then(response => {
+    if (response.length === 0) res.send('No favorite messages found')
+    else res.send(response)
+  }
+)}
 
 exports.saveMessage = (req, res) => {
   new Favorites ({
@@ -35,12 +41,21 @@ exports.deleteAllMessages = (req, res) => {
 
 exports.retrieveFriends = (req, res) => {
   let {username} = req.params
-  Friends.find({username: username}).then(response => res.send(response))
-}
+  Friends.find({username: username}).then(response => {
+    if (response.length === 0) res.send('no friends added')
+    else res.send(response)
+  }
+)}
 
 exports.saveFriend = (req, res) => {
   new Friends ({
     username: req.body.username,
     friend: req.body.fromWho
-  }).save().then(response => res.send(response))
+  }).save().then(respone => res.send('saved friend'))
+}
+
+exports.deleteFriend = (req, res) => {
+  Friends.deleteOne({friend: req.body.fromWho}).then(response => {
+    Favorites.remove({fromWho: req.body.fromWho}).then(response => res.send('deleted friend and all his messages'))
+  })
 }
