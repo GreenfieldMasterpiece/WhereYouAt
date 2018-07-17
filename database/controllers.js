@@ -1,4 +1,4 @@
-let {Favorites, Users} = require('./schemas.js')
+let {Favorites, Users, Friends} = require('./schemas.js')
 
 exports.saveUser = (req, res) => {
   return new Users ({
@@ -31,4 +31,16 @@ exports.deleteMessage = (req, res) => {
 
 exports.deleteAllMessages = (req, res) => {
   Favorites.remove({}).then(response => res.send('all messages by user deleted'))
+}
+
+exports.retrieveFriends = (req, res) => {
+  let {username} = req.params
+  Friends.find({username: username}).then(response => res.send(response))
+}
+
+exports.saveFriend = (req, res) => {
+  new Friends ({
+    username: req.body.username,
+    friend: req.body.fromWho
+  }).save().then(response => res.send(response))
 }
