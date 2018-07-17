@@ -7,7 +7,9 @@ const NavComponent = (props) => {
     <nav className='navbar-container'>
       <NavbarItemsComponent 
         userLogin={props.userLogin}
-        navItemClicked={props.navItemClicked} />
+        navItemClicked={props.navItemClicked}
+        loginUser={props.loginUser}
+        loggedIn={props.loggedIn} />
     </nav>
   )
 }
