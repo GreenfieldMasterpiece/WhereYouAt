@@ -9,21 +9,39 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      
+      login: true
     }
     // bind methods here
+    this.navItemClicked = this.navItemClicked.bind(this);
   }
 
+  navItemClicked(e){
+    console.log('Nav Item clicked');
+    this.setState({
+      navItemShow: !this.state.navItemShow
+    })
+  }
   // use methods here
 
   render() {
-    return (
-      <div>
-        <NavComponent /> 
-        <HeaderComponent />
-        <ChatContainerComponent />
-      </div>
-    )
+    if(this.state.login){
+      return (
+        <div>
+          <NavComponent 
+            navItemShow={this.state.navItemShow}
+            navItemClicked={this.navItemClicked}
+            /> 
+        </div>
+      )
+    } else {
+      return (
+          <div>
+            <HeaderComponent />
+            <ChatContainerComponent />
+          </div>
+      )
+    }
+    
   }
 }
 

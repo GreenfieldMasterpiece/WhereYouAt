@@ -4,7 +4,9 @@ const HeaderComponent = () => {
 
   return(
     <header>
-      {/*  place something here if needed */}
+      {/* <div className='header-section'>
+        <h2>Where You At?</h2>
+      </div> */}
     </header>
   )
 }
