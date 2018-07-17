@@ -55,7 +55,7 @@ class NavbarItemsComponent extends React.Component {
               <div>
                 <button
                   className='login-btn'
-                  onClick={(e) => this.navItemClicked(e)}>Sign in</button>
+                  onClick={(e) => {this.navItemClicked(e); this.props.getLocation()}}>Sign in</button>
               </div>
             </form>
           </div>

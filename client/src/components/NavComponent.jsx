@@ -5,13 +5,14 @@ const NavComponent = (props) => {
   console.log('Props | NavCmpt | ', props);
   return(
     <nav className='navbar-container'>
-      <NavbarItemsComponent 
+      <NavbarItemsComponent
         userLogin={props.userLogin}
         navItemClicked={props.navItemClicked}
         loginUser={props.loginUser}
         loggedIn={props.loggedIn}
         loginError={props.loginError}
-        logout={props.logout} />
+        logout={props.logout}
+        getLocation={props.getLocation}/>
     </nav>
   )
 }
