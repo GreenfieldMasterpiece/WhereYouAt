@@ -123,3 +123,60 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/***************************/
+/* Chat Client Component */
+/***************************/
+
+.chat-client-container {
+  position: relative;
+  width: 50%;
+  height: 500px;
+  border-radius: 8px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 2px #000;
+  background-color: #ecf0f1;
+}
+
+.socket-chat-title-box {
+  position: relative;
+  height: 100px;
+  border-radius: 8px;
+  background: linear-gradient(to left, #e66465, #e67e22);
+}
+
+.socket-chat-title-box h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+}
+
+.socket-chat-container {
+  position: absolute;
+  display: inline-block;
+  width: 100%;
+  bottom: 0;
+}
+
+.socket-chat-container form {
+  margin-bottom: 30px;
+}
+
+.socket-chat-container #messageInput {
+  display: block;
+  width: 80%;
+  padding-left: 0;
+  border: none;
+  border-radius: 0;
+  border-bottom: 1px solid #000;
+  margin: 0 auto;
+  color: #000;
+}
+
+#messageInput::placeholder {
+  color: #000;
+}
