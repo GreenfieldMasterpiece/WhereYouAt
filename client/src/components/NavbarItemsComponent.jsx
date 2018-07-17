@@ -5,7 +5,8 @@ class NavbarItemsComponent extends React.Component {
     console.log('NavbarItems Props | ', props);
     super(props);
     this.state = {
-      userInput: ''
+      userInput: '',
+      passInput: ''
     } 
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
@@ -53,7 +54,19 @@ class NavbarItemsComponent extends React.Component {
               </div>
               <div className='password-box'>
                 <label htmlFor="">Password</label>
-                <input type="text" placeholder='password'/>
+                <input type="text" placeholder='password' 
+                onChange={(e) => {
+                  let input = e.target.value.split('');
+                  for (let i = 0; i < input.length; i++) {
+                    input[i] = '*';
+                  }
+                  input = input.join('');
+                  console.log(input);
+                  this.setState({
+                    passInput: input
+                  })
+                }}
+                value={this.state.passInput}/>
               </div>
               <div>
                 <button
