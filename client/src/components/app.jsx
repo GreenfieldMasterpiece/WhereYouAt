@@ -18,6 +18,7 @@ class App extends React.Component {
     this.navItemClicked = this.navItemClicked.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.getFriends = this.getFriends.bind(this);
+    this.userLogin = this.userLogin.bind(this);
   }
 
 
