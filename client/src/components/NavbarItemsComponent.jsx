@@ -8,9 +8,14 @@ class NavbarItemsComponent extends React.Component {
       userInput: ''
     } 
     // bind methods here
+    this.navItemClicked = this.navItemClicked.bind(this);
   }
 
   // place methods here
+  navItemClicked(e){
+    e.preventDefault();
+    this.props.loginUser(this.state.userInput);
+  }
 
   render(){
     if(this.props.loggedIn){
@@ -45,7 +50,7 @@ class NavbarItemsComponent extends React.Component {
               <div>
                 <button
                   className='login-btn'
-                  onClick={(e) => this.props.userLogin(e)}>Sign in</button>
+                  onClick={(e) => this.navItemClicked(e)}>Sign in</button>
               </div>
             </form>
           </div>
