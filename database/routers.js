@@ -3,6 +3,7 @@ let controllers = require('./controllers.js')
 
 router.route('/')
   .post(controllers.saveUser)
+  .get(controllers.getUsers)
 
 router.route('/:username')
   .get(controllers.retrieveUser)
