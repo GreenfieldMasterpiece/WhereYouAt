@@ -1,11 +1,11 @@
 import React from 'react';
 import NavbarItemsComponent from '../components/NavbarItemsComponent.jsx';
 
-const NavComponent = () => {
+const NavComponent = (props) => {
 
   return(
     <nav className='navbar-container'>
-      <NavbarItemsComponent />
+      <NavbarItemsComponent loginUser={props.loginUser} loggedIn={props.loggedIn}/>
     </nav>
   )
 }

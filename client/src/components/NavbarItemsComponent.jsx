@@ -4,7 +4,6 @@ class NavbarItemsComponent extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      navItemShow: false,
       userInput: ''
     } 
     // bind methods here
@@ -12,15 +11,13 @@ class NavbarItemsComponent extends React.Component {
   }
 
   navItemClicked(e){
-    console.log('Nav Item clicked');
-    this.setState({
-      navItemShow: !this.state.navItemShow
-    })
+    e.preventDefault();
+    this.props.loginUser(this.state.userInput);
   }
   // place methods here
 
   render(){
-    if(this.state.navItemShow){
+    if(this.props.loggedIn){
       return (
         <ul className='navbar-items'>
           <li className='title'>Where You At</li>
@@ -37,14 +34,20 @@ class NavbarItemsComponent extends React.Component {
             <form action="">
               <div className='username-box'>
                 <label htmlFor="">Username</label>
-                <input type="text" placeholder='username'/>
+                <input type="text" placeholder='username' 
+                onChange={(e) => {
+                  this.setState({
+                    userInput: e.target.value
+                  })
+                }}
+                value={this.state.userInput}/>
               </div>
               <div className='password-box'>
                 <label htmlFor="">Password</label>
                 <input type="text" placeholder='password'/>
               </div>
               <div>
-                <button 
+                <button
                   className='login-btn'
                   onClick={(e) => this.navItemClicked(e)}>Sign in</button>
               </div>

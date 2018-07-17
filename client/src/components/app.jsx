@@ -9,10 +9,14 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      login: true
+      login: true,
+      username: '',
+      friends: [],
+      loggedIn: false
     }
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
+    this.loginUser = this.loginUser.bind(this);
   }
 
   navItemClicked(e){
@@ -22,6 +26,23 @@ class App extends React.Component {
     })
   }
   // use methods here
+  loginUser(username) {
+    axios.post('/', username)
+    .then((data) => {
+      console.log(data);
+      this.setState({
+        user: data.username,
+        friends: data.friends,
+        loggedIn: true
+      })
+      .catch((err) => {
+        //Set error message in login failure
+        console.log('hi');
+        console.log(err);
+      })
+    })
+  }
+
 
   render() {
     if(this.state.login){
@@ -30,6 +51,8 @@ class App extends React.Component {
           <NavComponent 
             navItemShow={this.state.navItemShow}
             navItemClicked={this.navItemClicked}
+            loginUser={this.loginUser}
+            loggedIn={this.state.loggedIn}
             /> 
         </div>
       )
