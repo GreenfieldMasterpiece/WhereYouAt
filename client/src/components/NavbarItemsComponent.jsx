@@ -2,18 +2,14 @@ import React from 'react';
 
 class NavbarItemsComponent extends React.Component {
   constructor(props){
+    console.log('NavbarItems Props | ', props);
     super(props);
     this.state = {
       userInput: ''
     } 
     // bind methods here
-    this.navItemClicked = this.navItemClicked.bind(this);
   }
 
-  navItemClicked(e){
-    e.preventDefault();
-    this.props.loginUser(this.state.userInput);
-  }
   // place methods here
 
   render(){
@@ -21,7 +17,7 @@ class NavbarItemsComponent extends React.Component {
       return (
         <ul className='navbar-items'>
           <li className='title'>Where You At</li>
-          <li onClick={(e) => this.navItemClicked(e)}>Logout</li>
+          <li onClick={(e) => this.props.navItemClicked(e)}>Logout</li>
         </ul>
       )
     } else {
@@ -49,7 +45,7 @@ class NavbarItemsComponent extends React.Component {
               <div>
                 <button
                   className='login-btn'
-                  onClick={(e) => this.navItemClicked(e)}>Sign in</button>
+                  onClick={(e) => this.props.userLogin(e)}>Sign in</button>
               </div>
             </form>
           </div>

@@ -20,12 +20,22 @@ class App extends React.Component {
     this.getFriends = this.getFriends.bind(this);
   }
 
+
   navItemClicked(e){
+    e.preventDefault();
+    console.log('Nav Item clicked');
     this.setState({
       navItemShow: !this.state.navItemShow
     })
   }
 
+  userLogin(e) {
+    e.preventDefault();
+    
+    this.setState({
+      login: !this.state.login
+    })
+  }
   // use methods here
   loginUser(username) {
     axios.get(`/whereyouat/${username}`)
@@ -59,7 +69,8 @@ class App extends React.Component {
     if(this.state.login){
       return (
         <div>
-          <NavComponent 
+          <NavComponent
+            userLogin={this.userLogin} 
             navItemShow={this.state.navItemShow}
             navItemClicked={this.navItemClicked}
             loginUser={this.loginUser}
