@@ -24,7 +24,6 @@ class App extends React.Component {
 
   navItemClicked(e){
     e.preventDefault();
-    console.log('Nav Item clicked');
     this.setState({
       navItemShow: !this.state.navItemShow
     })
@@ -39,6 +38,7 @@ class App extends React.Component {
   }
   // use methods here
   loginUser(username) {
+    console.log('success');
     axios.get(`/whereyouat/${username}`)
     .then((data) => {
       this.setState({
@@ -49,6 +49,7 @@ class App extends React.Component {
     })
     .catch((err) => {
       //Set error message in login failure
+      console.log('failure');
       console.log(err);
     })
   }
