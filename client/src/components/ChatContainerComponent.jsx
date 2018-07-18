@@ -10,14 +10,16 @@ class ChatContainerComponent extends React.Component {
     // bind methods here
   }
 
-  // use methods here 
+  // use methods here
 
   render(){
     return(
       <div className='chat-container-component'>
         <FriendsListComponent friends={this.props.friends}/>
         <ChatClientComponent username={this.props.username}/>
-        <GoogleMapsComponent />
+        <GoogleMapsComponent
+          long={this.props.long}
+          lat={this.props.lat}/>
       </div>
     )
   }

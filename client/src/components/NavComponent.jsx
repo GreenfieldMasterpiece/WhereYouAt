@@ -6,10 +6,7 @@ const NavComponent = (props) => {
   return(
     <nav className='navbar-container'>
       <NavbarItemsComponent
-<<<<<<< HEAD
-=======
         username={props.username}
->>>>>>> socket-io-integration
         userLogin={props.userLogin}
         navItemClicked={props.navItemClicked}
         loginUser={props.loginUser}
