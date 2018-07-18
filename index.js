@@ -17,11 +17,7 @@ app.use(express.static(__dirname + '/client/dist/'));
 
 app.use('/whereyouat', router)
 
-
 // route handler will use /chat and serve the page with the chat box
-app.get('/chat', (req, res)=> {
-  res.sendFile(__dirname + '/test.html');
-})
 
 let port = 3000;
 
@@ -29,9 +25,14 @@ var server = app.listen(port, () => {console.log('Listening on port ' + port)})
 
 var io = require('socket.io').listen(server);
 
+// io.on('connection', function(socket){
+//   console.log('a user connected');
+// });
+
 // creating connection for socket.io
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
+    console.log('CHAT MESSAGE IS: ', msg);
     io.emit('chat message', msg);
   });
 });
