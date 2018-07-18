@@ -21,7 +21,7 @@
   width: 100%;
   height: 59px;
   padding: 20px;
-  background-color: #3498db;
+  background-color: #6200ea;
 }
 
 .navbar-items {
@@ -140,9 +140,9 @@ header {
 
 .socket-chat-title-box {
   position: relative;
-  height: 100px;
+  height: 80px;
   border-radius: 8px;
-  background: linear-gradient(to left, #e66465, #e67e22);
+  background-color: #00c853;
 }
 
 .socket-chat-title-box h2 {
@@ -167,9 +167,10 @@ header {
   display: block;
   width: 80%;
   padding: 0;
+  padding: 10px;
   border: none;
   border-radius: 0;
-  border-bottom: 1px solid #000;
+  border-bottom: 2px solid #6200ea;
   margin: 0 auto;
   color: #000;
 }
