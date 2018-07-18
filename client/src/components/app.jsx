@@ -24,6 +24,7 @@ class App extends React.Component {
     this.userLogin = this.userLogin.bind(this);
     this.logout = this.logout.bind(this);
     this.getLocation = this.getLocation.bind(this);
+    this.signUpUser = this.signUpUser.bind(this);
   }
 
   getLocation() {
@@ -36,6 +37,19 @@ class App extends React.Component {
       this.setState({
         longitude: long,
         latitude: lat
+      })
+    })
+  }
+
+  signUpUser(username) {
+    axios.post('/whereyouat', {
+      username: username
+    }).then(response => {
+      this.setState({
+        username: username,
+        loggedIn: true,
+        loginError: '',
+        login: false
       })
     })
   }
@@ -112,6 +126,7 @@ class App extends React.Component {
             loginError={this.state.loginError}
             logout={this.logout}
             getLocation={this.getLocation}
+            signUpUser={this.signUpUser}
             />
         </div>
       )
