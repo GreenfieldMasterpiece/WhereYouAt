@@ -103,12 +103,8 @@ class App extends React.Component {
       return (
         <div>
           <NavComponent
-<<<<<<< HEAD
-            userLogin={this.userLogin}
-=======
             username={this.state.username}
             userLogin={this.userLogin} 
->>>>>>> socket-io-integration
             navItemShow={this.state.navItemShow}
             navItemClicked={this.navItemClicked}
             loginUser={this.loginUser}
