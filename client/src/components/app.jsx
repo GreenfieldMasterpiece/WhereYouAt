@@ -70,7 +70,7 @@ class App extends React.Component {
     axios.get(`/whereyouat/${username}`)
     .then((data) => {
       this.setState({
-        user: username,
+        username: username,
         loggedIn: true,
         loginError: '',
         login: false
@@ -103,7 +103,12 @@ class App extends React.Component {
       return (
         <div>
           <NavComponent
+<<<<<<< HEAD
             userLogin={this.userLogin}
+=======
+            username={this.state.username}
+            userLogin={this.userLogin} 
+>>>>>>> socket-io-integration
             navItemShow={this.state.navItemShow}
             navItemClicked={this.navItemClicked}
             loginUser={this.loginUser}
@@ -127,7 +132,9 @@ class App extends React.Component {
             logout={this.logout}
           />
           <HeaderComponent />
-          <ChatContainerComponent friends={this.state.friends}/>
+          <ChatContainerComponent 
+            username={this.state.username}
+            friends={this.state.friends}/>
         </div>
       )
     }
@@ -135,4 +142,4 @@ class App extends React.Component {
   }
 }
 
-export default App
+export default App;
