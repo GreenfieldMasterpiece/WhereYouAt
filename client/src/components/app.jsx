@@ -70,7 +70,7 @@ class App extends React.Component {
     axios.get(`/whereyouat/${username}`)
     .then((data) => {
       this.setState({
-        user: username,
+        username: username,
         loggedIn: true,
         loginError: '',
         login: false
