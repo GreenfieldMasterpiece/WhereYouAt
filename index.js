@@ -32,12 +32,13 @@ io.on('connection', function(socket){
 
   // when the client emits 'chat message', this listens to a 'new message event' and executes
   socket.on('chat message', (msg) => {
-    console.log('CHAT MESSAGE IS: ', msg);
+    console.log('msg being receieved: ', msg);
     // we tell the client to execute the new message
-    socket.broadcast.emit('chat message', msg)
+    io.emit('chat message', msg)
 
-    // sending to the client
-    //socket.emit('chat message', msg);
+    // we need to emit the name back to the client 
   })
+
+  // we are going to create sessions in order to remember user information
 
 });
