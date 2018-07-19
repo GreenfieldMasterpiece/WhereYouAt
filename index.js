@@ -19,7 +19,7 @@ app.use('/whereyouat', router)
 
 // route handler will use /chat and serve the page with the chat box
 
-let port = 3000;
+const port = process.env.PORT || 3000
 var server = app.listen(port, () => {console.log('Listening on port ' + port)})
 var io = require('socket.io').listen(server);
 
@@ -42,4 +42,3 @@ io.on('connection', function(socket){
   // we are going to create sessions in order to remember user information
 
 });
-
