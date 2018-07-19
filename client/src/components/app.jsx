@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import NavComponent from '../components/NavComponent.jsx';
 import ChatContainerComponent from '../components/ChatContainerComponent.jsx';
-import Login from '../components/Login.jsx';
+import Login from '../components/login.jsx';
 
 
 class App extends React.Component {
@@ -141,7 +141,7 @@ class App extends React.Component {
       let newFriends = response.data.map((friendObject) => {
         return friendObject.friend;
       });
-      
+
       this.setState({
         friends: newFriends
       })
@@ -156,13 +156,14 @@ class App extends React.Component {
       }
     })
     .then((res)=>{
+      this.getFriends(username)
       console.log('Sending Delete req to server');
     })
     .catch((res)=>{
       console.log('Sending Delete friend ERROR');
     })
   }
-  
+
   componentDidMount() {
     window.onbeforeunload = this.disconnect;
   }

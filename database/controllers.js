@@ -52,7 +52,7 @@ exports.retrieveFriends = (req, res) => {
 )}
 
 exports.saveFriend = (req, res) => {
-  console.log(req.body.username);
+  console.log('saving friends username', req.body.username);
   console.log(req.body.fromWho);
   new Friends ({
     username: req.body.username,

@@ -15,11 +15,11 @@ class ChatContainerComponent extends React.Component {
   render(){
     return(
       <div className='chat-container-component'>
-        <FriendsListComponent 
+        <FriendsListComponent
           username={this.props.username}
           deleteFriend={this.props.deleteFriend}
           friends={this.props.friends}/>
-        <ChatClientComponent 
+        <ChatClientComponent
           getFriends={this.props.getFriends}
           username={this.props.username}/>
         <GoogleMapsComponent
