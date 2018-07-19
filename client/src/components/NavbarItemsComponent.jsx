@@ -100,7 +100,7 @@ class NavbarItemsComponent extends React.Component {
       } else {
         return (
           <div className='login-container'>
-            <div className='login-box'>
+            <div className='signin-box'>
               <div className='login'>
                 <h3 className='loginBut' onClick={(e) => this.switchSignUpScreen()}>LogIn</h3>
                 <h3>SignUp</h3>
