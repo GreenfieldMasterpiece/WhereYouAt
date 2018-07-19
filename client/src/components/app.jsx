@@ -16,7 +16,7 @@ class App extends React.Component {
       loginError: '',
       latitude: '',
       longitude: '',
-      removeLogoutBtn: true
+      removeLogoutBtn: false
     }
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
@@ -99,7 +99,7 @@ class App extends React.Component {
     this.setState({
       login: true,
       username: '',
-      removeLogoutBtn: false,
+      removeLogoutBtn: !this.state.removeLogoutBtn,
       friends: [],
       loggedIn: false,
       loginError: '',
@@ -122,6 +122,7 @@ class App extends React.Component {
         username: username,
         loggedIn: true,
         loginError: '',
+        removeLogoutBtn: !this.state.removeLogoutBtn,
         login: false
       })
       this.getFriends(username);
