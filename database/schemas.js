@@ -14,7 +14,7 @@ let usersSchema = mongoose.Schema({
 
 let friendSchema = mongoose.Schema({
   username: {type: String, unique: true},
-  friend: {type: String, _id:false}
+  friend: {type: String, _id:false, unique:true}
 })
 
 let Favorites = db.model('Favorites', userFavsSchema)
