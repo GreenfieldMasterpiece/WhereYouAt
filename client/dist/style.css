@@ -72,8 +72,23 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    box-shadow:  0 1px 1px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,1);
-    background:  linear-gradient(rgba(255, 0, 0, 0.45), rgba(255, 0, 0, 0.45)), url('https://s8.postimg.cc/m27bp9a8l/image.jpg') center center no-repeat;
+    box-shadow: 4px 4px 3px #000;
+    background:  linear-gradient(rgba(0, 255, 0, 0.45), rgba(255, 0, 0, 0.45)), url('https://s8.postimg.cc/m27bp9a8l/image.jpg') center center no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+
+.signin-box {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    padding: 40px;
+    border-radius: 5px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 4px 4px 3px #000;
+    background:  linear-gradient(rgba(255,0,255,0.3), rgba(255, 0, 0, 0.45)), url('https://s8.postimg.cc/m27bp9a8l/image.jpg') center center no-repeat;
     background-size: cover;
     color: #fff;
 }
