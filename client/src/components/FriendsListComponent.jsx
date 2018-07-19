@@ -21,7 +21,8 @@ class FriendsListComponent extends React.Component {
                 <li 
                   onClick={(e) => this.props.deleteFriend(this.props.username, e.target.innerHTML)}
                   key={i}>{friend}</li>
-                <i className="fas fa-heart"></i>  
+                <i className="fas fa-heart"
+                onClick={(e) => this.props.selectFriend(friend)}></i>  
             </div>
           )}
         </ul>
