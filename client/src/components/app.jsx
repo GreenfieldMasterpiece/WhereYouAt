@@ -3,7 +3,7 @@ import axios from 'axios';
 import NavComponent from '../components/NavComponent.jsx';
 import HeaderComponent from '../components/HeaderComponent.jsx';
 import ChatContainerComponent from '../components/ChatContainerComponent.jsx';
-import Login from '../components/Login.jsx';
+import Login from '../components/login.jsx';
 
 
 class App extends React.Component {
