@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import NavComponent from '../components/NavComponent.jsx';
-import HeaderComponent from '../components/HeaderComponent.jsx';
 import ChatContainerComponent from '../components/ChatContainerComponent.jsx';
 import Login from '../components/login.jsx';
 
@@ -16,7 +15,8 @@ class App extends React.Component {
       loggedIn: false,
       loginError: '',
       latitude: '',
-      longitude: ''
+      longitude: '',
+      removeLogoutBtn: true
     }
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
@@ -24,11 +24,13 @@ class App extends React.Component {
     this.getFriends = this.getFriends.bind(this);
     this.userLogin = this.userLogin.bind(this);
     this.logout = this.logout.bind(this);
+
     this.getLocation = this.getLocation.bind(this);
     this.signUpUser = this.signUpUser.bind(this);
     this.deleteFriend = this.deleteFriend.bind(this);
     this.registerLocation = this.registerLocation.bind(this);
     this.pollForCenter = this.pollForCenter.bind(this);
+
     this.getCenter = this.getCenter.bind(this);
     this.disconnect = this.disconnect.bind(this);
   }
@@ -69,7 +71,6 @@ class App extends React.Component {
       }).catch((err) => {
         console.log(err);
       })
-
   }
 
 
@@ -94,9 +95,11 @@ class App extends React.Component {
   }
 
   logout() {
+    console.log('LOGOUT WAS CLICKED');
     this.setState({
       login: true,
       username: '',
+      removeLogoutBtn: false,
       friends: [],
       loggedIn: false,
       loginError: '',
@@ -204,13 +207,15 @@ class App extends React.Component {
       return (
         <div>
           <NavComponent
+            logout={this.logout}
+            login={this.state.login}
+            removeLogoutBtn={this.state.removeLogoutBtn}
             userLogin={this.userLogin}
-            navItemShow={this.state.navItemShow}
-            navItemClicked={this.navItemClicked}
             loginUser={this.loginUser}
             loggedIn={this.state.loggedIn}
             loginError={this.state.loginError}
-            logout={this.logout}
+            navItemShow={this.state.navItemShow}
+            navItemClicked={this.navItemClicked}
           />
 
           <ChatContainerComponent
