@@ -1,5 +1,6 @@
 import React from 'react';
 import io from 'socket.io-client';
+import axios from 'axios';
 
 class ChatClientComponent extends React.Component {
   constructor(props){
@@ -7,37 +8,34 @@ class ChatClientComponent extends React.Component {
     this.state = {
       userInput: '',
       chatArr: [],
-      currentUserSpeaking: ''
+      saveClickedFriend: ''
     }
     this.socket = io();
 
     // bind methods here
     this.sendMessage = this.sendMessage.bind(this);
     this.handleRecieveMessage = this.handleRecieveMessage.bind(this);
+    this.saveFriend = this.saveFriend.bind(this);
     
     // listens to chat message event coming from server
     this.socket.on('chat message', (data) => {
       console.log('chat message data', data);
       this.handleRecieveMessage(data)
     });
-    // this.socket.on('chat message', (data) => {})
   }
-
-  // place methods here
-
 
   handleRecieveMessage(dataRecievedFromServer) {
     console.log('UserInput entered: ', dataRecievedFromServer);
 
     let newArr = this.state.chatArr.slice();
     
-    newArr.push([dataRecievedFromServer.user, dataRecievedFromServer.message]);
+    newArr.push(dataRecievedFromServer);
 
 
     this.setState({
       chatArr: newArr,
       currentUserSpeaking: dataRecievedFromServer.user
-    }, () => console.log(this.state.chatArr))
+    })
   }
 
   // click event for sending data to server
@@ -48,12 +46,25 @@ class ChatClientComponent extends React.Component {
       user: this.props.username,
       message: this.state.userInput 
     });
+  }
 
-    // this.handleMessages({
-    //   // maybe i should be passing the user name in here too?
-    //   message: this.state.userInput
-    // });
-    //listen for events coming back from server
+  saveFriend(friend, username){
+    console.log('target:', friend);
+    this.setState({
+      saveClickedFriend: friend
+    }, () => console.log('Friend selected to save', this.state.saveClickedFriend))
+
+    // this.props.username is current user logged in
+    axios.post(`/whereyouat/${username}/friends`, { 
+      username: this.props.username,
+      fromWho: friend
+    })
+    .then((res)=> {
+      console.log('Sending friend to server: ', res);
+    })
+    .catch((res) => {
+      console.log('Sending friend ERROR to server: ', res);
+    })
   }
 
   render(){
@@ -64,8 +75,17 @@ class ChatClientComponent extends React.Component {
         </div>
         <div className='socket-chat-container'>
           <ul id="messages">
-            {this.state.chatArr.map((chat, i) =>
-              <li key={i}>{chat[0]}: {chat[1]}</li>
+            {this.state.chatArr.map((chat, i) => ( 
+                <div>
+                  <li
+                    className='user' 
+                    onClick={(e) => this.saveFriend(e.target.innerHTML, this.props.username)} 
+                    key={i}>{chat.user}
+                  </li>
+                  <li
+                  className='user-message'>: {chat.message} </li>
+                </div>
+              )
             )}
           </ul>
         </div>
