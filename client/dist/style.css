@@ -221,9 +221,8 @@ header {
 }
 
 .chat-client-container #messageInput {
-  display: block;
+  display: inline-block;
   width: 80%;
-  padding: 0;
   padding: 10px;
   border: none;
   border-radius: 0;
@@ -234,6 +233,7 @@ header {
 
 .chat-client-container form {
   margin-top: 0;
+  padding: 0 25px;
 }
 
 #messageInput::placeholder {
@@ -247,6 +247,14 @@ header {
 
 .user-message {
   display: inline-block;
+}
+
+.fa-keyboard {
+  display: inline-block;
+  margin-right: 14px;
+  vertical-align: bottom;
+  font-size: 30px;
+  color: #ff6348;
 }
 
 /***************************/
@@ -297,6 +305,21 @@ header {
   color: #3498db;
   font-size: 20px;
 }
+
+.no-friends {
+  position: relative;
+  height: 100%;
+}
+
+.fa-sad-tear {
+    position: absolute;
+    color: #2ecc71;
+    font-size: 54px;
+    top: 35%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+
 
 /***************************/
 /* Google's Map Component  */

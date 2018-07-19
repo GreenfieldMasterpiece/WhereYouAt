@@ -90,6 +90,7 @@ class ChatClientComponent extends React.Component {
           </ul>
         </div>
         <form action="" onSubmit={this.sendMessage}>
+          <i className="fas fa-keyboard"></i>
           <input
             onChange={(e) => this.setState({userInput: e.target.value})}
             id="messageInput" 

@@ -24,6 +24,12 @@ class FriendsListComponent extends React.Component {
             </div>
           )}
         </ul>
+        <div className='no-friends'>
+          <i 
+            style={this.props.friends.length > 0 ? {display: 'none'} : {display: 'block'}}
+            className="fas fa-sad-tear">
+          </i>  
+        </div>
       </div>
     )
   }
