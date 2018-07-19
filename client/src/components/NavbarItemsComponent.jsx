@@ -2,7 +2,6 @@ import React from 'react';
 
 class NavbarItemsComponent extends React.Component {
   constructor(props){
-    console.log('NavbarItems Props | ', props);
     super(props);
     this.state = {
       userInput: '',
@@ -45,7 +44,6 @@ class NavbarItemsComponent extends React.Component {
     if(this.props.loggedIn){
       return (
         <ul className='navbar-items'>
-          <li className='title'>Where You At</li>
           <li onClick={(e) => this.props.logout(e)}>Logout</li>
         </ul>
       )
