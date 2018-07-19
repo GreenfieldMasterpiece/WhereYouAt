@@ -1,5 +1,4 @@
 import React from 'react';
-import NavbarItemsComponent from '../components/NavbarItemsComponent.jsx';
 
 const NavComponent = (props) => {
   return(
@@ -7,17 +6,8 @@ const NavComponent = (props) => {
       <div className='navbar-logo'>
         <i className="fas fa-chalkboard-teacher"></i>
         <p>WhereYouAt</p>
+        <li className='navbar-items' onClick={(e) => this.props.logout(e)}>Logout</li>
       </div>
-      <NavbarItemsComponent
-        username={props.username}
-        userLogin={props.userLogin}
-        navItemClicked={props.navItemClicked}
-        loginUser={props.loginUser}
-        loggedIn={props.loggedIn}
-        loginError={props.loginError}
-        logout={props.logout}
-        getLocation={props.getLocation}
-        signUpUser={props.signUpUser}/>
     </nav>
   )
 }
