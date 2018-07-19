@@ -7,35 +7,24 @@ class ChatClientComponent extends React.Component {
     super(props);
     this.state = {
       userInput: '',
-      chatArr: [],
       saveClickedFriend: ''
     }
     this.socket = io();
 
     // bind methods here
     this.sendMessage = this.sendMessage.bind(this);
-    this.handleRecieveMessage = this.handleRecieveMessage.bind(this);
     this.saveFriend = this.saveFriend.bind(this);
-
+    this.handleMessage = this.handleMessage.bind(this);
+    
     // listens to chat message event coming from server
     this.socket.on('chat message', (data) => {
       console.log('chat message data', data);
-      this.handleRecieveMessage(data)
+      this.handleMessage(data);
     });
   }
 
-  handleRecieveMessage(dataRecievedFromServer) {
-    console.log('UserInput entered: ', dataRecievedFromServer);
-
-    let newArr = this.state.chatArr.slice();
-
-    newArr.push(dataRecievedFromServer);
-
-
-    this.setState({
-      chatArr: newArr,
-      currentUserSpeaking: dataRecievedFromServer.user
-    })
+  handleMessage(data) {
+    this.props.handleRecieveMessage(data);
   }
 
   // click event for sending data to server
@@ -68,6 +57,20 @@ class ChatClientComponent extends React.Component {
     })
   }
 
+  saveMessage(message, user) {
+    console.log('trying to save message:', message);
+    console.log('trying to save user', user)
+    axios.post(`/whereyouat/${this.props.username}/messages`, {
+      username: this.props.username,
+      favoriteMessage: message,
+      fromWho: user
+    }).then((response) => {
+      console.log('message saved');
+    }).catch((err) => {
+      console.log('messgae save failure');
+    })
+  }
+
   render(){
     return(
       <div className='chat-client-container'>
@@ -76,7 +79,7 @@ class ChatClientComponent extends React.Component {
         </div>
         <div className='socket-chat-container'>
           <ul id="messages">
-            {this.state.chatArr.map((chat, i) => (
+            {this.props.chatArr.map((chat, i) => ( 
                 <div>
                   <li
                     className='user'
@@ -84,7 +87,7 @@ class ChatClientComponent extends React.Component {
                     key={i}>{chat.user}
                   </li>
                   <li
-                  className='user-message'>: {chat.message} </li>
+                  className='user-message' onClick={(e) => this.saveMessage(chat.message, chat.user)}>: {chat.message} </li>
                 </div>
               )
             )}
