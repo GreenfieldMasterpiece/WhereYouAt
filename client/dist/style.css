@@ -220,6 +220,20 @@ header {
   overflow: scroll;
 }
 
+.socket-chat-container ul div:nth-child(odd){
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.socket-chat-container ul div:nth-child(even){
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
 .chat-client-container #messageInput {
   display: inline-block;
   width: 80%;
@@ -318,6 +332,12 @@ header {
     top: 35%;
     left: 45%;
     transform: translate(-50%, -50%);
+}
+
+.fa-heart {
+  color: red;
+  font-size: 20px;
+  float: right;
 }
 
 
