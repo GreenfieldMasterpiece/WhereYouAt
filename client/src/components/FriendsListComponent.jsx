@@ -21,6 +21,7 @@ class FriendsListComponent extends React.Component {
                 <li 
                   onClick={(e) => this.props.deleteFriend(this.props.username, e.target.innerHTML)}
                   key={i}>{friend}</li>
+                <i className="fas fa-heart"></i>  
             </div>
           )}
         </ul>
@@ -28,7 +29,8 @@ class FriendsListComponent extends React.Component {
           <i 
             style={this.props.friends.length > 0 ? {display: 'none'} : {display: 'block'}}
             className="fas fa-sad-tear">
-          </i>  
+          </i>
+          
         </div>
       </div>
     )
