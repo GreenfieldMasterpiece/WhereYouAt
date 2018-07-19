@@ -13,8 +13,8 @@ class FriendsListComponent extends React.Component {
       <div className='friends-list-container'>
         <h2>Friends List</h2>
         <ul>
-          {this.props.friends.map((friend) =>
-            <li>{friend}</li>
+          {this.props.friends.map((friend, i) =>
+            <li key={i}>{friend}</li>
           )}
         </ul>
       </div>

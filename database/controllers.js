@@ -52,10 +52,12 @@ exports.retrieveFriends = (req, res) => {
 )}
 
 exports.saveFriend = (req, res) => {
+  console.log(req.body.username);
+  console.log(req.body.fromWho);
   new Friends ({
     username: req.body.username,
     friend: req.body.fromWho
-  }).save().then(respone => res.send('saved friend'))
+  }).save().then(response => res.send('saved friend')).catch((response)=> res.status(400).send('saved friend erorr'));
 }
 
 exports.deleteFriend = (req, res) => {
