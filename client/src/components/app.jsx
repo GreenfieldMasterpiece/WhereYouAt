@@ -3,6 +3,7 @@ import axios from 'axios';
 import NavComponent from '../components/NavComponent.jsx';
 import HeaderComponent from '../components/HeaderComponent.jsx';
 import ChatContainerComponent from '../components/ChatContainerComponent.jsx';
+import Login from '../components/Login.jsx';
 
 
 class App extends React.Component {
@@ -25,6 +26,7 @@ class App extends React.Component {
     this.logout = this.logout.bind(this);
     this.getLocation = this.getLocation.bind(this);
     this.signUpUser = this.signUpUser.bind(this);
+    this.deleteFriend = this.deleteFriend.bind(this);
   }
 
   getLocation() {
@@ -113,6 +115,21 @@ class App extends React.Component {
     })
   }
 
+  deleteFriend(username, friend) {
+    axios.delete(`/whereyouat/${username}/friends`, {
+      data: {
+        username: username,
+        fromWho: friend
+      }
+    })
+    .then((res)=>{
+      console.log('Sending Delete req to server');
+    })
+    .catch((res)=>{
+      console.log('Sending Delete friend ERROR');
+    })
+  }
+
 
   render() {
     if(this.state.login){
@@ -129,7 +146,19 @@ class App extends React.Component {
             logout={this.logout}
             getLocation={this.getLocation}
             signUpUser={this.signUpUser}
-            />
+          />
+
+          <Login
+            username={this.state.username}
+            userLogin={this.userLogin}
+            navItemClicked={this.state.navItemClicked}
+            loginUser={this.loginUser}
+            loggedIn={this.state.loggedIn}
+            loginError={this.state.loginError}
+            logout={this.logout}
+            getLocation={this.getLocation}
+            signUpUser={this.signUpUser}
+          />
         </div>
       )
     } else {
@@ -144,9 +173,9 @@ class App extends React.Component {
             loginError={this.state.loginError}
             logout={this.logout}
           />
-          <HeaderComponent />
 
           <ChatContainerComponent
+            deleteFriend={this.deleteFriend}
             getFriends={this.getFriends}
             username={this.state.username}
             friends={this.state.friends}
