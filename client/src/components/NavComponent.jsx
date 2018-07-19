@@ -13,7 +13,8 @@ const NavComponent = (props) => {
         loggedIn={props.loggedIn}
         loginError={props.loginError}
         logout={props.logout}
-        getLocation={props.getLocation}/>
+        getLocation={props.getLocation}
+        signUpUser={props.signUpUser}/>
     </nav>
   )
 }

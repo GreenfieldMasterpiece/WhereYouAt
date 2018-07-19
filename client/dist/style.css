@@ -10,7 +10,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   transition: all .5s;
-  font-family: "Montserrat", Arial; 
+  font-family: "Montserrat", Arial;
 }
 
 /***************************/
@@ -103,6 +103,13 @@ input::placeholder {
   color: #000;
 }
 
+.login h3 {
+  display: inline-block;
+}
+
+.loginBut {
+  margin-right: 15px;
+}
 /***************************/
 /* Header Component  */
 /***************************/
