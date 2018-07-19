@@ -153,6 +153,7 @@ class App extends React.Component {
       }
     })
     .then((res)=>{
+      this.getFriends(username)
       console.log('Sending Delete req to server');
     })
     .catch((res)=>{
