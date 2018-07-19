@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const axios = require('axios')
 const db = require('./database/index.js')
 const router = require('./database/routers.js');
+const chatRouter = require('./server/socket-io/routers.js');
 
 let app = express();
 
@@ -16,6 +17,8 @@ app.use(morgan('dev'))
 app.use(express.static(__dirname + '/client/dist/'));
 
 app.use('/whereyouat', router)
+
+app.use('/chat', chatRouter)
 
 // route handler will use /chat and serve the page with the chat box
 

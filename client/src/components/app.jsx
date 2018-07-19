@@ -25,6 +25,10 @@ class App extends React.Component {
     this.logout = this.logout.bind(this);
     this.getLocation = this.getLocation.bind(this);
     this.signUpUser = this.signUpUser.bind(this);
+    this.registerLocation = this.registerLocation.bind(this);
+    this.pollForCenter = this.pollForCenter.bind(this);
+    this.getCenter = this.getCenter.bind(this);
+    this.disconnect = this.disconnect.bind(this);
   }
 
   getLocation() {
@@ -33,13 +37,39 @@ class App extends React.Component {
 
       let long = crd.longitude
       let lat = crd.latitude
-
-      this.setState({
-        longitude: long,
-        latitude: lat
-      })
+      this.registerLocation(long, lat);
     })
   }
+
+  registerLocation(long, lat) {
+    axios.post('/chat', {longitude: long, latitude: lat})
+    .then((response) => {
+      this.pollForCenter()
+    }).catch((err) => {
+        console.log(err);
+      })
+    }
+
+  pollForCenter() {
+    this.getCenter;
+    setInterval(() => {
+      this.getCenter();
+    }, 5000);
+  }
+
+  getCenter() {
+    axios.get('/chat')
+      .then((response) => {
+        this.setState({
+          latitude: response.data.latitude,
+          longitude: response.data.longitude
+        })
+      }).catch((err) => {
+        console.log(err);
+      })
+    
+  }
+
 
   signUpUser(username) {
     axios.post('/whereyouat', {
@@ -109,6 +139,14 @@ class App extends React.Component {
         friends: newFriends
       })
     })
+  }
+
+  componentDidMount() {
+    window.onbeforeunload = this.disconnect;
+  }
+
+  disconnect(){
+    axios.post('/chat/leave', {latitude: this.state.latitude, longitude: this.state.longitude});
   }
 
 
