@@ -122,7 +122,8 @@ class App extends React.Component {
         username: username,
         loggedIn: true,
         loginError: '',
-        login: false
+        login: false,
+        removeLogoutBtn: true
       })
       this.getFriends(username);
     })
