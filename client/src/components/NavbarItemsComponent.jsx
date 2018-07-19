@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Login extends React.Component {
+class NavbarItemsComponent extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -40,8 +40,14 @@ class Login extends React.Component {
     this.props.logout();
   }
 
-
   render(){
+    if(this.props.loggedIn){
+      return (
+        <ul className='navbar-items'>
+          <li onClick={(e) => this.props.logout(e)}>Logout</li>
+        </ul>
+      )
+    } else {
       if(this.state.signedUp) {
         return (
           <div className='login-container'>
@@ -137,5 +143,6 @@ class Login extends React.Component {
       }
     }
   }
+}
 
-export default Login;
+export default NavbarItemsComponent;
