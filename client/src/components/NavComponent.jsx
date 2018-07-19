@@ -2,9 +2,12 @@ import React from 'react';
 import NavbarItemsComponent from '../components/NavbarItemsComponent.jsx';
 
 const NavComponent = (props) => {
-  console.log('Props | NavCmpt | ', props.username);
   return(
     <nav className='navbar-container'>
+      <div className='navbar-logo'>
+        <i className="fas fa-chalkboard-teacher"></i>
+        <p>WhereYouAt</p>
+      </div>
       <NavbarItemsComponent
         username={props.username}
         userLogin={props.userLogin}

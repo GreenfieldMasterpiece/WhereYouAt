@@ -102,9 +102,11 @@ class App extends React.Component {
   getFriends(username) {
     axios.get(`/whereyouat/${username}/friends`)
     .then((response) => {
+      console.log('RESPONSE FROM GET FRIENDS : ', response);
       let newFriends = response.data.map((friendObject) => {
         return friendObject.friend;
       });
+      
       this.setState({
         friends: newFriends
       })
@@ -143,7 +145,9 @@ class App extends React.Component {
             logout={this.logout}
           />
           <HeaderComponent />
+
           <ChatContainerComponent
+            getFriends={this.getFriends}
             username={this.state.username}
             friends={this.state.friends}
             long={this.state.longitude}
