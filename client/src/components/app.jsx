@@ -69,7 +69,7 @@ class App extends React.Component {
       }).catch((err) => {
         console.log(err);
       })
-    
+
   }
 
 
@@ -138,7 +138,7 @@ class App extends React.Component {
       let newFriends = response.data.map((friendObject) => {
         return friendObject.friend;
       });
-      
+
       this.setState({
         friends: newFriends
       })
@@ -159,7 +159,7 @@ class App extends React.Component {
       console.log('Sending Delete friend ERROR');
     })
   }
-  
+
   componentDidMount() {
     window.onbeforeunload = this.disconnect;
   }
