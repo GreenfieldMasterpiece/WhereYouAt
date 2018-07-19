@@ -132,7 +132,6 @@ class App extends React.Component {
   getFriends(username) {
     axios.get(`/whereyouat/${username}/friends`)
     .then((response) => {
-      console.log('RESPONSE FROM GET FRIENDS : ', response);
       let newFriends = response.data.map((friendObject) => {
         return friendObject.friend;
       });
@@ -189,12 +188,12 @@ class App extends React.Component {
             username={this.state.username}
             friends={this.state.friends}
             long={this.state.longitude}
-            lat={this.state.latitude}/>
+            lat={this.state.latitude}
+            username={this.state.username}/>
         </div>
       )
     }
 
   }
-}
-
+}//test
 export default App;

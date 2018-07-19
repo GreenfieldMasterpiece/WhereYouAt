@@ -14,7 +14,7 @@ class FriendsListComponent extends React.Component {
         <h2>Friends List</h2>
         <ul>
           {this.props.friends.map((friend, i) =>
-            <li key={i}>{friend}</li>
+            <li onClick={(e) => this.props.selectFriend(friend)} key={i}>{friend}</li>
           )}
         </ul>
       </div>
