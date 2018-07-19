@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import NavComponent from '../components/NavComponent.jsx';
-import HeaderComponent from '../components/HeaderComponent.jsx';
 import ChatContainerComponent from '../components/ChatContainerComponent.jsx';
+import Login from '../components/login.jsx';
 
 
 class App extends React.Component {
@@ -15,7 +15,8 @@ class App extends React.Component {
       loggedIn: false,
       loginError: '',
       latitude: '',
-      longitude: ''
+      longitude: '',
+      removeLogoutBtn: true
     }
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
@@ -23,10 +24,13 @@ class App extends React.Component {
     this.getFriends = this.getFriends.bind(this);
     this.userLogin = this.userLogin.bind(this);
     this.logout = this.logout.bind(this);
+
     this.getLocation = this.getLocation.bind(this);
     this.signUpUser = this.signUpUser.bind(this);
+    this.deleteFriend = this.deleteFriend.bind(this);
     this.registerLocation = this.registerLocation.bind(this);
     this.pollForCenter = this.pollForCenter.bind(this);
+
     this.getCenter = this.getCenter.bind(this);
     this.disconnect = this.disconnect.bind(this);
   }
@@ -67,7 +71,6 @@ class App extends React.Component {
       }).catch((err) => {
         console.log(err);
       })
-    
   }
 
 
@@ -92,9 +95,11 @@ class App extends React.Component {
   }
 
   logout() {
+    console.log('LOGOUT WAS CLICKED');
     this.setState({
       login: true,
       username: '',
+      removeLogoutBtn: false,
       friends: [],
       loggedIn: false,
       loginError: '',
@@ -135,10 +140,26 @@ class App extends React.Component {
       let newFriends = response.data.map((friendObject) => {
         return friendObject.friend;
       });
-      
+
       this.setState({
         friends: newFriends
       })
+    })
+  }
+
+  deleteFriend(username, friend) {
+    axios.delete(`/whereyouat/${username}/friends`, {
+      data: {
+        username: username,
+        fromWho: friend
+      }
+    })
+    .then((res)=>{
+      this.getFriends(username)
+      console.log('Sending Delete req to server');
+    })
+    .catch((res)=>{
+      console.log('Sending Delete friend ERROR');
     })
   }
 
@@ -166,24 +187,38 @@ class App extends React.Component {
             logout={this.logout}
             getLocation={this.getLocation}
             signUpUser={this.signUpUser}
-            />
+          />
+
+          <Login
+            username={this.state.username}
+            userLogin={this.userLogin}
+            navItemClicked={this.state.navItemClicked}
+            loginUser={this.loginUser}
+            loggedIn={this.state.loggedIn}
+            loginError={this.state.loginError}
+            logout={this.logout}
+            getLocation={this.getLocation}
+            signUpUser={this.signUpUser}
+          />
         </div>
       )
     } else {
       return (
         <div>
           <NavComponent
+            logout={this.logout}
+            login={this.state.login}
+            removeLogoutBtn={this.state.removeLogoutBtn}
             userLogin={this.userLogin}
-            navItemShow={this.state.navItemShow}
-            navItemClicked={this.navItemClicked}
             loginUser={this.loginUser}
             loggedIn={this.state.loggedIn}
             loginError={this.state.loginError}
-            logout={this.logout}
+            navItemShow={this.state.navItemShow}
+            navItemClicked={this.navItemClicked}
           />
-          <HeaderComponent />
 
           <ChatContainerComponent
+            deleteFriend={this.deleteFriend}
             getFriends={this.getFriends}
             username={this.state.username}
             friends={this.state.friends}

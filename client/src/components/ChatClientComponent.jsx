@@ -33,7 +33,7 @@ class ChatClientComponent extends React.Component {
     // emit a chat message from your client to your server with the obj
     this.socket.emit('chat message', {
       user: this.props.username,
-      message: this.state.userInput 
+      message: this.state.userInput
     });
   }
 
@@ -44,11 +44,12 @@ class ChatClientComponent extends React.Component {
     }, () => console.log('Friend selected to save', this.state.saveClickedFriend))
 
     // this.props.username is current user logged in
-    axios.post(`/whereyouat/${username}/friends`, { 
+    axios.post(`/whereyouat/${username}/friends`, {
       username: this.props.username,
       fromWho: friend
     })
     .then((res)=> {
+      this.props.getFriends(username)
       console.log('Sending friend to server: ', res);
     })
     .catch((res) => {
@@ -81,8 +82,8 @@ class ChatClientComponent extends React.Component {
             {this.props.chatArr.map((chat, i) => ( 
                 <div>
                   <li
-                    className='user' 
-                    onClick={(e) => this.saveFriend(e.target.innerHTML, this.props.username)} 
+                    className='user'
+                    onClick={(e) => this.saveFriend(e.target.innerHTML, this.props.username)}
                     key={i}>{chat.user}
                   </li>
                   <li
@@ -93,12 +94,13 @@ class ChatClientComponent extends React.Component {
           </ul>
         </div>
         <form action="" onSubmit={this.sendMessage}>
+          <i className="fas fa-keyboard"></i>
           <input
             onChange={(e) => this.setState({userInput: e.target.value})}
-            id="messageInput" 
-            placeholder='type message' 
-            autoComplete="off" 
-            required type='text' 
+            id="messageInput"
+            placeholder='type message'
+            autoComplete="off"
+            required type='text'
           />
         </form>
       </div>

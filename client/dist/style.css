@@ -17,29 +17,31 @@
 /* Navbar Component  */
 /***************************/
 
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block; 
+}
+
+
 .navbar-container {
   width: 100%;
   height: 59px;
   background-color: #6200ea;
 }
 
-.navbar-items {
-  display: table;
-  width: 100%;
-  text-align: right;
-}
-
 .navbar-logo {
-    display: inline-block;
-    margin-top: 15px;
-    margin-left: 30px;
+  height: 100%;
+  padding: 14px 20px 0;
 }
 
-.navbar-items li {
-  display: inline-block;
+.navbar-items {
+  padding-top: 5px;
+  padding-right: 20px;
   color: #fff;
   cursor: pointer;
   list-style-type: none;
+  float: right;
 }
 
 
@@ -54,7 +56,7 @@
   position: relative;
   display: inline-block;
   padding-left: 10px;
-  top: -7px;
+  top: -5px;
   color: #fff;
   font-weight: bold;
 }
@@ -170,15 +172,25 @@ header {
 }
 
 /***************************/
+/* Chat Container Component */
+/***************************/
+
+.chat-container-component {
+  margin: 60px 1%;
+}
+
+
+/***************************/
 /* Chat Client Component */
 /***************************/
 
 .chat-client-container {
+  display: inline-block;
   position: relative;
   width: 50%;
   height: 500px;
   border-radius: 8px;
-  margin: 0 auto;
+  margin-left: 6%;
   box-shadow:  0 1px 1px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,.16);
   background-color: #ecf0f1;
 }
@@ -208,10 +220,23 @@ header {
   overflow: scroll;
 }
 
+.socket-chat-container ul div:nth-child(odd){
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.socket-chat-container ul div:nth-child(even){
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
 .chat-client-container #messageInput {
-  display: block;
+  display: inline-block;
   width: 80%;
-  padding: 0;
   padding: 10px;
   border: none;
   border-radius: 0;
@@ -222,6 +247,7 @@ header {
 
 .chat-client-container form {
   margin-top: 0;
+  padding: 0 25px;
 }
 
 #messageInput::placeholder {
@@ -237,6 +263,98 @@ header {
   display: inline-block;
 }
 
+.fa-keyboard {
+  display: inline-block;
+  margin-right: 14px;
+  vertical-align: bottom;
+  font-size: 30px;
+  color: #ff6348;
+}
+
 /***************************/
 /* Friends List Component  */
 /***************************/
+
+
+.friends-list-container {
+    display: inline-block;
+    width: 15%;
+    height: 500px;
+    vertical-align: top;
+    box-shadow: 0 1px 1px 0 rgba(60,64,67,.08), 0 1px 3px 1px rgba(60,64,67,.16);
+    background-color: #ecf0f1;
+}
+
+.friends-list-container .socket-chat-title-box {
+  border-radius: 8px;
+  background-color:#e74c3c;
+}
+
+.friends-list-container h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.friends-list-container ul {
+  margin-top: 10px;
+  width: 90%;
+  margin: 10px auto 0;
+  text-align: left;
+}
+
+.friends-list-container ul li {
+  display: inline-block;
+  list-style-type: none;
+  font-weight: bold;
+}
+
+.friendsList {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.fa-user {
+  display: inline-block;
+  padding-right: 10px;
+  color: #3498db;
+  font-size: 20px;
+}
+
+.no-friends {
+  position: relative;
+  height: 100%;
+}
+
+.fa-sad-tear {
+    position: absolute;
+    color: #2ecc71;
+    font-size: 54px;
+    top: 35%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+
+.fa-heart {
+  color: red;
+  font-size: 20px;
+  float: right;
+}
+
+
+/***************************/
+/* Google's Map Component  */
+/***************************/
+
+.google-maps-container {
+  float: right;
+  display: inline-block;
+  vertical-align: top;
+  height: 500px;
+}
+
+.gmap_canvas iframe {
+  height: 500px;
+  width: 350px;
+}
+
+
