@@ -3,6 +3,7 @@ import axios from 'axios';
 import NavComponent from '../components/NavComponent.jsx';
 import ChatContainerComponent from '../components/ChatContainerComponent.jsx';
 import Login from '../components/login.jsx';
+import io from 'socket.io-client';
 
 
 class App extends React.Component {
@@ -12,17 +13,18 @@ class App extends React.Component {
       login: true,
       username: '',
       friends: [],
+      numUsers: 0,
       loggedIn: false,
       loginError: '',
       latitude: '',
       longitude: '',
-      removeLogoutBtn: true
+      removeLogoutBtn: false
     }
     // bind methods here
     this.navItemClicked = this.navItemClicked.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.getFriends = this.getFriends.bind(this);
-    this.userLogin = this.userLogin.bind(this);
+    //this.userLogin = this.userLogin.bind(this);
     this.logout = this.logout.bind(this);
 
     this.getLocation = this.getLocation.bind(this);
@@ -99,29 +101,34 @@ class App extends React.Component {
     this.setState({
       login: true,
       username: '',
-      removeLogoutBtn: false,
+      removeLogoutBtn: !this.state.removeLogoutBtn,
       friends: [],
       loggedIn: false,
       loginError: '',
     })
   }
 
-  userLogin(e) {
-    e.preventDefault();
+  // userLogin(e) {
+  //   e.preventDefault();
 
-    this.setState({
-      login: !this.state.login
-    })
-  }
+  //   this.setState({
+  //     login: !this.state.login
+  //   })
+  // }
+
   // use methods here
   loginUser(username) {
     console.log('success');
+
+  
+
     axios.get(`/whereyouat/${username}`)
     .then((data) => {
       this.setState({
         username: username,
         loggedIn: true,
         loginError: '',
+        removeLogoutBtn: !this.state.removeLogoutBtn,
         login: false
       })
       this.getFriends(username);
@@ -137,13 +144,20 @@ class App extends React.Component {
   getFriends(username) {
     axios.get(`/whereyouat/${username}/friends`)
     .then((response) => {
-      let newFriends = response.data.map((friendObject) => {
-        return friendObject.friend;
-      });
+      console.log('friend response data', response.data)
+      if(response.data[0].friend === '') {
+        this.setState({
+          friends: []
+        })
+      } else {
+        let newFriends = response.data.map((friendObject) => {
+          return friendObject.friend;
+        });
 
-      this.setState({
-        friends: newFriends
-      })
+        this.setState({
+          friends: newFriends
+        })
+      }
     })
   }
 
@@ -154,7 +168,7 @@ class App extends React.Component {
         fromWho: friend
       }
     })
-    .then((res)=>{
+    .then((res)=> {
       this.getFriends(username)
       console.log('Sending Delete req to server');
     })
@@ -218,6 +232,8 @@ class App extends React.Component {
           />
 
           <ChatContainerComponent
+            disconnect={this.disconnect}
+            numUsers={this.state.numUsers}
             deleteFriend={this.deleteFriend}
             getFriends={this.getFriends}
             username={this.state.username}

@@ -13,10 +13,10 @@ class FriendsListComponent extends React.Component {
           <h2>Friends List</h2>
         </div>
         <ul>
-          {this.props.friends.map((friend, i) => 
+          {this.props.friends.map((friend, i) =>
             <div className='friendsList'>
                 <i className="fas fa-user"></i>
-                <li 
+                <li
                   onClick={(e) => this.props.deleteFriend(this.props.username, e.target.innerHTML)}
                   key={i}>{friend}</li>
                 <i 
@@ -27,11 +27,11 @@ class FriendsListComponent extends React.Component {
           )}
         </ul>
         <div className='no-friends'>
-          <i 
+          <i
             style={this.props.friends.length > 0 ? {display: 'none'} : {display: 'block'}}
             className="fas fa-sad-tear">
           </i>
-          
+
         </div>
       </div>
     )

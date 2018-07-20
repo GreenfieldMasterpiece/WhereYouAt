@@ -87,6 +87,7 @@ class ChatContainerComponent extends React.Component {
           selectFriend={this.selectFriend}
           toggleChatInput={this.toggleChatInput}/>
         <ChatClientComponent
+          getUserCount={this.props.getUserCount}
           getFriends={this.props.getFriends}
           username={this.props.username}
           chatArr={this.state.chatArr}
