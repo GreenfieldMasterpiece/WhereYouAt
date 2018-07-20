@@ -14,6 +14,11 @@ Built With
 * [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
 * [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 * [React](https://reactjs.org/)
+* [Mongo](https://www.mongodb.com/)
+* [Mongoose](http://mongoosejs.com/docs/queries.html)
+* [Express](https://expressjs.com/)
+* [Heroku](https://heroku.com)
+* [Mlab](https://mlab.com/login/)
 * [GoogleMaps](maps.google.com)
 * [Socket.io](https://socket.io/)
 
