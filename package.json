@@ -29,6 +29,8 @@
     "axios": "^0.18.0",
     "create-react-ref": "^0.1.0",
     "createref": "^0.5.0",
+    "emoji-js": "^3.4.1",
+    "emoji-picker-react": "^2.0.4",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
     "jquery": "^3.3.1",
@@ -36,6 +38,7 @@
     "morgan": "^1.9.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-emojione": "^5.0.0",
     "socket.io": "^2.1.1",
     "socket.io-client": "^2.1.1"
   }

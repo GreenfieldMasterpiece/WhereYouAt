@@ -70,6 +70,7 @@ class ChatContainerComponent extends React.Component {
           friends={this.props.friends}
           selectFriend={this.selectFriend}/>
         <ChatClientComponent
+          getUserCount={this.props.getUserCount}
           getFriends={this.props.getFriends}
           username={this.props.username}
           chatArr={this.state.chatArr}

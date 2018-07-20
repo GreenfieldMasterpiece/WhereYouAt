@@ -3,6 +3,7 @@ import axios from 'axios';
 import NavComponent from '../components/NavComponent.jsx';
 import ChatContainerComponent from '../components/ChatContainerComponent.jsx';
 import Login from '../components/login.jsx';
+import io from 'socket.io-client';
 
 
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
       login: true,
       username: '',
       friends: [],
+      numUsers: 0,
       loggedIn: false,
       loginError: '',
       latitude: '',
@@ -22,7 +24,7 @@ class App extends React.Component {
     this.navItemClicked = this.navItemClicked.bind(this);
     this.loginUser = this.loginUser.bind(this);
     this.getFriends = this.getFriends.bind(this);
-    this.userLogin = this.userLogin.bind(this);
+    //this.userLogin = this.userLogin.bind(this);
     this.logout = this.logout.bind(this);
 
     this.getLocation = this.getLocation.bind(this);
@@ -106,16 +108,20 @@ class App extends React.Component {
     })
   }
 
-  userLogin(e) {
-    e.preventDefault();
+  // userLogin(e) {
+  //   e.preventDefault();
 
-    this.setState({
-      login: !this.state.login
-    })
-  }
+  //   this.setState({
+  //     login: !this.state.login
+  //   })
+  // }
+
   // use methods here
   loginUser(username) {
     console.log('success');
+
+  
+
     axios.get(`/whereyouat/${username}`)
     .then((data) => {
       this.setState({
@@ -226,6 +232,8 @@ class App extends React.Component {
           />
 
           <ChatContainerComponent
+            disconnect={this.disconnect}
+            numUsers={this.state.numUsers}
             deleteFriend={this.deleteFriend}
             getFriends={this.getFriends}
             username={this.state.username}
