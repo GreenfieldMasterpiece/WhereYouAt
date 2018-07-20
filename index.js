@@ -31,17 +31,28 @@ var numUsers = 0;
 
 // creating connection method for socket.io to browser
 io.on('connection', function(socket){
-  console.log('Made socket connection', socket.id);
+  numUsers++;
+  console.log(' %s sockets connected', io.engine.clientsCount);
+
+  // listen for incoming connect event
+  io.sockets.emit('user count', numUsers);
+
+  socket.on("disconnect", () => {
+    io.sockets.emit("disconnect", --numUsers);
+    console.log('user disconnected:', numUsers);
+  });
+
+  
 
   // when the client emits 'chat message', this listens to a 'new message event' and executes
   socket.on('chat message', (msg) => {
-    console.log('msg being receieved: ', msg);
+    //console.log('msg being receieved: ', msg);
     // we tell the client to execute the new message
     io.emit('chat message', msg)
 
     // we need to emit the name back to the client 
   })
-
   // we are going to create sessions in order to remember user information
 
 });
+
