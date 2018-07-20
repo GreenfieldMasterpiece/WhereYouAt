@@ -1,12 +1,22 @@
 WhereYouAt
 ===========
 
-WhereYouAt is a chat application which will connect users from all around the world and display the central location of those users. 
+WhereYouAt is a chat application which will connect users from all around the world and display the central location of those users.
 
 View WhereYouAt
 ================
 
-[WhereYouAt](https://where-youat.herokuapp.com/)
+[WhereYouAt](https://where-youat.herokuapp.com/) 😎
+
+Features
+============== 
+- Easy setup to quickly start chatting with random people / friends from around the world.
+- Real time communication with ⚡ speed response times.
+- Easily add friends by clicking their names.
+- Enjoyed what your friend wrote? Click on the 💾 to save their messages.
+- Quickly view saved messages from friends by clicking the ♥️ next to their names.
+- Click the ♥️ again to toggle back to chat screen.
+- Map quickly shows the mid point between two users!
 
 Built With
 ----------
