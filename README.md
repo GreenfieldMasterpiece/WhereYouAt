@@ -27,87 +27,32 @@ Configuration
 
 Start by cloning this repository in your terminal
 ```
-$ git clone https://github.com/ilitvak/Weather-App.git.
+$ git clone https://github.com/Black-Lotus-X/whereyouat.git.
 ```
-
-Windows
----
-
-Before you start using Sass you will need to install Ruby. The fastest way to get Ruby on your Windows computer is to use [Ruby Installer](https://rubyinstaller.org/). It's a single-click installer that will get everything set up for you super fast.
-
-The installer will also install a Ruby command line powershell application that will let you use the Ruby libraries.
-
-Mac
----
-
-If you prefer the command line over an application then getting Sass set up is a fairly quick process. Sass has a Ruby dependency but if you're using a Mac, congratulations, Ruby comes pre-installed.
-
-Install Sass
----
-Here's the quickest way we've found to start using Sass by using the command line:
-
-1. Open your terminal or command prompt
-
 ```
-On the Mac the Terminal.app comes installed by default. It's located in your "Utilities" folder. On Windows, run `cmd`.
+run npm install
 ```
-
-2. Install SASS
 ```
-gem install sass
+npm run server-dev
 ```
-
-This will install Sass and any dependencies for you. It's pretty magical. If you get an error message then it's likely you will need to use the sudo command to install the Sass gem. It would look like:
-
 ```
-sudo gem install sass
+npm run react-dev
 ```
-
-3. Check version
-
-```
-sass -v
-```
-
-4. It should return
-
-```
-3.5.4
-```
-
-
-
 
 
 Running the Application
 -----------------------
 
-To see the site locally, open [index.html](https://github.com/ilitvak/Weather-App/blob/master/index.html) in your browser.
-
-
-
-SASS
------------
-This app uses the CSS pre-processor [SASS](http://sass-lang.com/). The SASS files can be found inside the scss directory. 
-
-In the terminal run
-
 ```
-sass --watch /Users/purewisdom/Desktop/weatr-app/scss/scss.scss
+Open your default browser and run localhost:3000
 ```
-
-This command tells sass to watch the directory you specified and it will compile the changes on each change made within the text editor.
-
-Buzz.js
------------
-This library is used to help you to easily include and manage sounds in your websites.
 
 
 Screenshots
 -----------
 
-![Imgur](https://i.imgur.com/dhTS822.png)
+![Login](https://s8.postimg.cc/xtywyklph/Screen_Shot_2018-07-20_at_3.05.56_PM.png)
 
-![Imgur](https://i.imgur.com/mXS40Bd.png)
+![MainPage](https://s8.postimg.cc/ec49isoth/Screen_Shot_2018-07-20_at_3.06.07_PM.png)
 
-![Imgur](https://i.imgur.com/hj4A3Ak.png)
+![Chat](https://s8.postimg.cc/i8hleueyt/Screen_Shot_2018-07-20_at_3.06.37_PM.png)
