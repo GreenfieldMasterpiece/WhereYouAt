@@ -1,7 +1,6 @@
 import React from 'react';
 
 const NavComponent = (props) => {
-  console.log('props:' , props);
   return(
     <nav className='navbar-container'>
       <div className='navbar-logo'>
